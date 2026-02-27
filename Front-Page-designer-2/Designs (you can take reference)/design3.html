@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Engineering Cover</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #ff4d00; /* Bold Engineering Orange */
+            --subtle: #f4f4f4;
+        }
+
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        body {
+            background-color: #ccc;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 0 50px rgba(0,0,0,0.2);
+        }
+
+        /* Large Graphic Side Strip */
+        .side-strip {
+            width: 60px;
+            background: var(--primary);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vertical-text {
+            transform: rotate(-90deg);
+            color: white;
+            white-space: nowrap;
+            font-weight: 900;
+            font-size: 35px;
+            letter-spacing: 15px;
+            opacity: 0.1;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Geometric Background Elements */
+        .geo-circle {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            border: 40px solid var(--subtle);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* Header Styling */
+        header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 80px;
+        }
+
+        .uni-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .dept-line {
+            height: 4px;
+            width: 80px;
+            background: var(--accent);
+            margin: 15px 0;
+        }
+
+        .dept-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            letter-spacing: 2px;
+        }
+
+        /* Assignment Hero Section */
+        .hero {
+            margin-bottom: 60px;
+        }
+
+        .year-badge {
+            font-family: 'Space Mono', monospace;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 0.8;
+            margin: 0;
+            color: var(--primary);
+            letter-spacing: -4px;
+        }
+
+        /* Topic Box - Asymmetric Design */
+        .topic-container {
+            border-left: 10px solid var(--accent);
+            padding: 20px 30px;
+            background: var(--subtle);
+            margin-bottom: 50px;
+        }
+
+        .topic-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .topic-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Info Grid - The "Bento" Style */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .info-cell {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #999;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Footer / Signatures */
+        .footer {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .sign-box {
+            width: 200px;
+        }
+
+        .sign-line {
+            border-top: 2px solid var(--primary);
+            margin-top: 40px;
+            padding-top: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .a4-page { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="a4-page">
+    <div class="geo-circle"></div>
+    
+    <div class="side-strip">
+        <div class="vertical-text">ENGINEERING</div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="uni-name">I.K.G Punjab <br> Technical University</div>
+            <div class="dept-line"></div>
+            <div class="dept-name">Electronics & Communication Engineering</div>
+        </header>
+
+        <div class="hero">
+            <span class="year-badge">ACADEMIC YEAR 2025 - 2026</span>
+            <h1 class="main-title">ASSIGN<br>MENT</h1>
+        </div>
+
+        <div class="topic-container">
+            <span class="topic-label">Project / Assignment Topic</span>
+            <div class="topic-value">Enter Your Detailed Topic Title Here</div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-cell">
+                <span class="label">Student Name</span>
+                <div class="value">_________________________</div>
+            </div>
+            <div class="info-cell">
+                <span class="label">Roll Number</span>
+                <div class="value">_________________________</div>
+            </div>
+            <div class="info-cell">
+                <span class="label">Subject Name</span>
+                <div class="value">_________________________</div>
+            </div>
+            <div class="info-cell">
+                <span class="label">Subject Code</span>
+                <div class="value">_________________________</div>
+            </div>
+            <div class="info-cell">
+                <span class="label">Class / Semester</span>
+                <div class="value">_________________________</div>
+            </div>
+            <div class="info-cell">
+                <span class="label">Section</span>
+                <div class="value">_________________________</div>
+            </div>
+            <div class="info-cell" style="grid-column: span 2; border-bottom: none; background: var(--subtle);">
+                <span class="label">Date of Submission</span>
+                <div class="value" style="color: var(--accent);">03 MARCH 2026</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="sign-box">
+                <div class="sign-line">Submitted By</div>
+            </div>
+            <div class="sign-box">
+                <div class="sign-line" style="text-align: right;">Submitted To</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

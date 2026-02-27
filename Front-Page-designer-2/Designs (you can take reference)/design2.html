@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic ECE Assignment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e14;
+            --electric-blue: #00d2ff;
+            --neon-purple: #9d50bb;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glow: rgba(0, 210, 255, 0.4);
+        }
+
+        body {
+            background: #121212;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* A4 Canvas */
+        .a4-container {
+            width: 210mm;
+            height: 297mm;
+            background: var(--bg-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+            box-sizing: border-box;
+            border: 1px solid #333;
+        }
+
+        /* SVG Background Graphics (Circuit Pattern) */
+        .circuit-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Decorative Corners */
+        .corner {
+            position: absolute;
+            width: 50px; height: 50px;
+            border: 4px solid var(--electric-blue);
+            z-index: 2;
+        }
+        .top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+        /* Header Layout */
+        header {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 30px;
+        }
+
+        .uni-logo {
+            width: 80px;
+            filter: drop-shadow(0 0 10px var(--electric-blue));
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin: 0;
+            background: linear-gradient(90deg, #fff, var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .dept-tag {
+            background: var(--electric-blue);
+            color: black;
+            display: inline-block;
+            padding: 5px 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        /* Topic Card */
+        .topic-container {
+            position: relative;
+            z-index: 5;
+            margin: 60px 0;
+            padding: 30px;
+            background: var(--glass);
+            border: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+            border-radius: 0 40px 0 40px;
+        }
+
+        .assignment-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 45px;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px; left: 20px;
+        }
+
+        .topic-text {
+            font-size: 24px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--electric-blue);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            position: relative;
+            z-index: 5;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            border-left: 3px solid var(--neon-purple);
+            padding-left: 15px;
+        }
+
+        .label {
+            display: block;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        .value {
+            font-size: 18px;
+            font-weight: 500;
+            color: #eee;
+            border-bottom: 1px solid #333;
+            display: block;
+            margin-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        /* Footer / Submission */
+        .footer {
+            position: absolute;
+            bottom: 60px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .submission-box {
+            width: 220px;
+            text-align: center;
+        }
+
+        .sign-area {
+            height: 40px;
+            border-bottom: 1px solid var(--electric-blue);
+            margin-bottom: 10px;
+        }
+
+        .sub-label {
+            font-size: 14px;
+            color: var(--electric-blue);
+            font-weight: 700;
+        }
+
+        /* Custom Tech Graphics */
+        .tech-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
+            width: 80%;
+            left: 10%;
+            bottom: 150px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .a4-container { border: none; }
+            /* Force background colors for print */
+            * { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="a4-container">
+    <div class="top-left corner"></div>
+    <div class="bottom-right corner"></div>
+
+    <svg class="circuit-bg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 20 H20 V40 H40 V20 H60 V60 H80 V40 H100" fill="none" stroke="white" stroke-width="0.2"/>
+        <circle cx="20" cy="40" r="1" fill="white"/>
+        <circle cx="60" cy="60" r="1" fill="white"/>
+    </svg>
+
+    <header>
+        <img src="https://via.placeholder.com/100?text=PTU" alt="Logo" class="uni-logo">
+        <h1>I.K.G Punjab Technical University</h1>
+        <div class="dept-tag">ELECTRONICS AND COMMUNICATION ENGINEERING</div>
+        <p style="color: #666; margin-top: 15px;">Academic Session: 2025 - 2026</p>
+    </header>
+
+    <div class="topic-container">
+        <span class="assignment-label">ECE PROJECT</span>
+        <div class="label" style="text-align: center;">Assignment Topic</div>
+        <div class="topic-text">DESIGN AND ANALYSIS OF MICROCONTROLLER CIRCUITS</div>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="label">Student Name</span>
+            <span class="value">________________________</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Roll Number</span>
+            <span class="value">________________________</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Subject</span>
+            <span class="value">________________________</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Subject Code</span>
+            <span class="value">________________________</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Class / Semester</span>
+            <span class="value">________________________</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Section</span>
+            <span class="value">________________________</span>
+        </div>
+        <div class="info-item" style="grid-column: span 2;">
+            <span class="label">Submission Date</span>
+            <span class="value">03 MARCH 2026</span>
+        </div>
+    </div>
+
+    <div class="tech-line"></div>
+
+    <div class="footer">
+        <div class="submission-box">
+            <div class="sign-area"></div>
+            <span class="sub-label">SUBMITTED BY</span>
+        </div>
+        <div class="submission-box">
+            <div class="sign-area"></div>
+            <span class="sub-label">SUBMITTED TO</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

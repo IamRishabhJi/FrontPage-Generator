@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Assignment Front Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #002147;
+            --gold: #C5A021;
+            --light-grey: #f9f9f9;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: #555;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            margin: 0;
+        }
+
+        /* A4 Page Setup */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 15mm;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 2px solid var(--gold);
+        }
+
+        /* Royal Border Design */
+        .inner-border {
+            height: 100%;
+            border: 4px double var(--navy);
+            padding: 10mm;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Corner Ornaments */
+        .inner-border::before {
+            content: "◆";
+            position: absolute;
+            top: -15px; left: -15px;
+            background: white; color: var(--gold);
+            font-size: 24px; padding: 5px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .uni-name {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            color: var(--navy);
+            margin: 15px 0 5px 0;
+            font-weight: 800;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .dept-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #444;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 100px;
+            color: rgba(0, 33, 71, 0.03);
+            font-family: 'Cinzel', serif;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        /* Main Content */
+        .main-title-box {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .year {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .assignment-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 50px;
+            color: var(--navy);
+            margin: 10px 0;
+            letter-spacing: 8px;
+        }
+
+        /* Information Table Layout */
+        .info-section {
+            width: 90%;
+            margin-top: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-end;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--navy);
+            min-width: 180px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .info-dots {
+            flex-grow: 1;
+            border-bottom: 1px dashed #ccc;
+            margin-left: 10px;
+            font-size: 18px;
+            color: #222;
+            padding-bottom: 2px;
+        }
+
+        .topic-box {
+            background: var(--light-grey);
+            padding: 20px;
+            border-left: 5px solid var(--gold);
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        /* Footer / Submission Details */
+        .submission-footer {
+            width: 100%;
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 20px;
+        }
+
+        .sign-block {
+            text-align: center;
+            width: 200px;
+        }
+
+        .sign-line {
+            border-top: 1px solid var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .sign-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 13px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="watermark">IKGPTU ECE</div>
+    
+    <div class="inner-border">
+        <header class="header">
+            <div style="font-size: 50px; color: var(--navy);">🏛️</div>
+            <div class="uni-name">I.K.G Punjab Technical University</div>
+            <div class="dept-name">Department: Electronics and Communication Engineering</div>
+        </header>
+
+        <div class="main-title-box">
+            <div class="year">Academic Year 2025-26</div>
+            <h1 class="assignment-heading">ASSIGNMENT</h1>
+        </div>
+
+        <div class="topic-box">
+            <span style="font-weight: 700; color: var(--navy); display: block; margin-bottom: 5px;">TOPIC:</span>
+            <span style="font-size: 20px; font-style: italic;">"Enter Your Project/Assignment Topic Here"</span>
+        </div>
+
+        <div class="info-section">
+            <div class="info-row">
+                <span class="info-label">Student Name</span>
+                <span class="info-dots">________________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Roll Number</span>
+                <span class="info-dots">________________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Subject & Code</span>
+                <span class="info-dots">________________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Class / Semester</span>
+                <span class="info-dots">________________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Section</span>
+                <span class="info-dots">________________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Date of Submission</span>
+                <span class="info-dots">03 March 2026</span>
+            </div>
+        </div>
+
+        <div class="submission-footer">
+            <div class="sign-block">
+                <div class="sign-line"></div>
+                <span class="sign-text">SUBMITTED BY</span>
+            </div>
+            <div class="sign-block">
+                <div class="sign-line"></div>
+                <span class="sign-text">SUBMITTED TO</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

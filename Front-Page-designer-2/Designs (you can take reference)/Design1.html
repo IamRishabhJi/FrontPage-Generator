@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Front Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --accent-blue: #0056b3;
+            --text-dark: #333;
+            --border-light: #e0e0e0;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* A4 Page Styling */
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            border: 15px solid var(--primary-blue);
+            outline: 2px solid white;
+            outline-offset: -10px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 26px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dept-name {
+            color: var(--accent-blue);
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* Assignment Title Section */
+        .title-box {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .assignment-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 0;
+            letter-spacing: 5px;
+        }
+
+        .academic-year {
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Information Grid */
+        .details-container {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 8px;
+        }
+
+        .label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 14px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .value {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* Footer Section */
+        .footer {
+            position: absolute;
+            bottom: 40mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+        }
+
+        .signature-box {
+            width: 45%;
+            border-top: 2px solid var(--primary-blue);
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .footer-label {
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        @media print {
+            body { background: none; }
+            .a4-page { box-shadow: none; margin: 0; border: 10px solid var(--primary-blue); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="a4-page">
+    <header>
+        <img src="https://via.placeholder.com/100?text=IKGPTU+Logo" alt="University Logo" class="logo">
+        <h1>I.K.G Punjab Technical University</h1>
+        <div class="dept-name">Department of Electronics and Communication Engineering</div>
+    </header>
+
+    <div class="title-box">
+        <p class="academic-year">Academic Year 2025-26</p>
+        <h2 class="assignment-title">ASSIGNMENT</h2>
+    </div>
+
+    <div class="details-container">
+        <div class="field-group full-width">
+            <span class="label">Topic:</span>
+            <span class="value">____________________________________________________________</span>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Student Name:</span>
+            <span class="value">__________________________</span>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Roll No:</span>
+            <span class="value">__________________________</span>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Subject:</span>
+            <span class="value">__________________________</span>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Subject Code:</span>
+            <span class="value">__________________________</span>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Class / Semester:</span>
+            <span class="value">__________________________</span>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Section:</span>
+            <span class="value">__________________________</span>
+        </div>
+
+        <div class="field-group full-width">
+            <span class="label">Date of Submission:</span>
+            <span class="value">03 March 2026</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="signature-box">
+            <span class="footer-label">Submitted By</span>
+            <div style="margin-top: 10px;">__________________</div>
+        </div>
+        <div class="signature-box">
+            <span class="footer-label">Submitted To</span>
+            <div style="margin-top: 10px;">__________________</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

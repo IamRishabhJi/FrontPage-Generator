@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Assignment Cover</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #fdf2f2;
+            --accent-gold: #d4af37;
+            --deep-rose: #a36a6a;
+            --soft-text: #555;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: #eef2f3;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+
+        /* Decorative SVGs - Floral Corners */
+        .floral-corner {
+            position: absolute;
+            width: 250px;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        .top-right { top: -20px; right: -20px; transform: rotate(0deg); }
+        .bottom-left { bottom: -20px; left: -20px; transform: rotate(180deg); }
+
+        /* Subtle Background Pattern */
+        .bg-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#fdf2f2 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        /* Main Content Container */
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 20px solid transparent;
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='2'%3E%3Cpath d='M1 1h73v73H1z'/%3E%3Cpath d='M8 8h59v59H8z'/%3E%3C/g%3E%3C/svg%3E") 25 stretch;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .uni-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--deep-rose);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .dept-badge {
+            display: inline-block;
+            padding: 5px 25px;
+            background: var(--primary-pink);
+            color: var(--deep-rose);
+            border-radius: 50px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border: 1px solid var(--accent-gold);
+        }
+
+        /* Assignment Hero */
+        .hero {
+            margin: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        .assignment-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 55px;
+            color: var(--soft-text);
+            font-weight: 700;
+            font-style: italic;
+            position: relative;
+        }
+
+        .assignment-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 20%; right: 20%;
+            height: 1px; background: var(--accent-gold);
+        }
+
+        .session {
+            font-size: 16px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Info Section - Soft Card Style */
+        .info-card {
+            width: 85%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(163, 106, 106, 0.05);
+            margin-top: 20px;
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .label {
+            font-weight: 600;
+            color: var(--deep-rose);
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .value {
+            font-size: 16px;
+            color: var(--soft-text);
+        }
+
+        .topic-area {
+            margin-top: 20px;
+            text-align: center;
+            border: 1px dashed var(--accent-gold);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .topic-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--deep-rose);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 40px;
+        }
+
+        .sign-block {
+            text-align: center;
+        }
+
+        .sign-line {
+            width: 180px;
+            border-top: 1px solid var(--accent-gold);
+            margin-top: 40px;
+            padding-top: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--deep-rose);
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .a4-page { box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="a4-page">
+    <div class="bg-pattern"></div>
+    
+    <svg class="floral-corner top-right" viewBox="0 0 200 200">
+        <path fill="%23fdf2f2" d="M40,0 Q100,0 100,60 Q100,100 150,100 Q200,100 200,160 L200,0 Z" fill="#fdf2f2" opacity="0.4"/>
+        <circle cx="160" cy="40" r="20" fill="#d4af37" opacity="0.1"/>
+        <circle cx="130" cy="70" r="10" fill="#a36a6a" opacity="0.1"/>
+    </svg>
+
+    <svg class="floral-corner bottom-left" viewBox="0 0 200 200">
+        <path fill="%23fdf2f2" d="M40,0 Q100,0 100,60 Q100,100 150,100 Q200,100 200,160 L200,0 Z" fill="#fdf2f2" opacity="0.4"/>
+        <circle cx="160" cy="40" r="20" fill="#d4af37" opacity="0.1"/>
+    </svg>
+
+    <div class="content">
+        <header>
+            <div class="uni-name">I.K.G Punjab Technical University</div>
+            <div class="dept-badge">Dept of Electronics & Communication Engineering</div>
+        </header>
+
+        <div class="hero">
+            <h1 class="assignment-text">Assignment</h1>
+            <div class="session">Academic Year 2025 - 2026</div>
+        </div>
+
+        <div class="topic-area">
+            <div class="label" style="margin-bottom: 5px;">Submission Topic</div>
+            <div class="topic-title">"Enter Your Assignment Title Here"</div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-row">
+                <span class="label">Student Name</span>
+                <span class="value">_________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="label">Roll Number</span>
+                <span class="value">_________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="label">Subject</span>
+                <span class="value">_________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="label">Subject Code</span>
+                <span class="value">_________________________</span>
+            </div>
+            <div class="info-row">
+                <span class="label">Semester</span>
+                <span class="value">_________________________</span>
+            </div>
+            <div class="info-row" style="border: none;">
+                <span class="label">Submitted On</span>
+                <span class="value">03 March 2026</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="sign-block">
+                <div class="sign-line">SUBMITTED BY</div>
+            </div>
+            <div class="sign-block">
+                <div class="sign-line">SUBMITTED TO</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

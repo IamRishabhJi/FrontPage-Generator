@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Front Page Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;700;900&family=Space+Mono&family=Playfair+Display:ital,wght@0,700;1,400&family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- ─── LEFT: FORM PANEL ─── -->
+    <aside class="form-panel">
+        <div class="panel-header">
+            <h1>📄 Front Page Generator</h1>
+            <p>Pick a design &amp; colour, then fill in your details</p>
+            <button type="button" id="previewToggleBtn" class="preview-toggle-btn" aria-expanded="false">👁 Show Preview</button>
+        </div>
+
+        <!-- DESIGN SELECTOR -->
+        <div class="section-label">Choose Design</div>
+        <div class="design-grid">
+            <div class="design-card active" data-design="1" title="Classic">
+                <div class="design-thumb d1-thumb">
+                    <div class="dt-c dt-tl"></div><div class="dt-c dt-tr"></div>
+                    <div class="dt-c dt-bl"></div><div class="dt-c dt-br"></div>
+                    <div class="dt-lines"><span></span><span class="s"></span><span></span><span class="s"></span></div>
+                </div>
+                <span>Classic</span>
+            </div>
+            <div class="design-card" data-design="2" title="Futuristic">
+                <div class="design-thumb d2-thumb">
+                    <div class="dt-brk dt-tl"></div><div class="dt-brk dt-br"></div>
+                    <div class="dt-neon-lines"><span></span><span class="s"></span></div>
+                </div>
+                <span>Futuristic</span>
+            </div>
+            <div class="design-card" data-design="3" title="Geometric">
+                <div class="design-thumb d3-thumb">
+                    <div class="dt-strip"></div>
+                    <div class="dt-gcircle"></div>
+                    <div class="dt-g-lines"><span></span><span class="s"></span><span></span></div>
+                </div>
+                <span>Geometric</span>
+            </div>
+            <div class="design-card" data-design="4" title="Aesthetic">
+                <div class="design-thumb d4-thumb">
+                    <div class="dt-d-pattern"></div>
+                    <div class="dt-soft-lines"><span></span><span class="s"></span><span></span></div>
+                    <div class="dt-dsh-box"></div>
+                </div>
+                <span>Aesthetic</span>
+            </div>
+            <div class="design-card" data-design="5" title="Premium">
+                <div class="design-thumb d5-thumb">
+                    <div class="dt-outer-b"></div>
+                    <div class="dt-inner-b"></div>
+                    <div class="dt-diamond">◆</div>
+                    <div class="dt-p-lines"><span></span><span></span></div>
+                </div>
+                <span>Premium</span>
+            </div>
+        </div>
+
+        <!-- COLOR PALETTE -->
+        <div class="section-label">Choose Colour</div>
+        <div class="color-grid">
+            <button class="color-swatch active" data-color="blue"   title="Classic Blue"   style="background:linear-gradient(135deg,#002D62 50%,#00BFFF 50%)"></button>
+            <button class="color-swatch"        data-color="red"    title="Bold Red"        style="background:linear-gradient(135deg,#7B0000 50%,#E53935 50%)"></button>
+            <button class="color-swatch"        data-color="green"  title="Royal Green"     style="background:linear-gradient(135deg,#1B5E20 50%,#43A047 50%)"></button>
+            <button class="color-swatch"        data-color="purple" title="Deep Purple"     style="background:linear-gradient(135deg,#311B92 50%,#7C4DFF 50%)"></button>
+            <button class="color-swatch"        data-color="teal"   title="Electric Teal"   style="background:linear-gradient(135deg,#004D5C 50%,#00BCD4 50%)"></button>
+            <button class="color-swatch"        data-color="orange" title="Amber Orange"    style="background:linear-gradient(135deg,#BF360C 50%,#FF6D00 50%)"></button>
+            <button class="color-swatch"        data-color="rose"   title="Deep Rose"       style="background:linear-gradient(135deg,#880E4F 50%,#E91E63 50%)"></button>
+            <button class="color-swatch"        data-color="gold"   title="Navy Gold"       style="background:linear-gradient(135deg,#1A1A1A 50%,#C5A021 50%)"></button>
+        </div>
+
+
+        <form id="frontPageForm" autocomplete="off">
+
+            <!-- University -->
+            <div class="section-label">University / College</div>
+            <div class="input-group">
+                <label>University Name</label>
+                <input type="text" id="universityName" placeholder="e.g. I.K.G PUNJAB TECHNICAL UNIVERSITY" value="I.K.G PUNJAB TECHNICAL UNIVERSITY">
+            </div>
+            <div class="input-group">
+                <label>Department</label>
+                <input type="text" id="department" placeholder="e.g. Electronics and Communication Engineering" value="Electronics and Communication Engineering">
+            </div>
+            <div class="input-group">
+                <label>Logo <small>(PNG / JPG, max 200 KB)</small></label>
+                <input type="file" id="logoInput" accept="image/*">
+            </div>
+
+            <!-- Assignment -->
+            <div class="section-label">Assignment Details</div>
+            <div class="input-group">
+                <label>Subject <span class="req">*</span></label>
+                <input type="text" id="subject" placeholder="e.g. Data Structures" required>
+            </div>
+            <div class="input-group">
+                <label>Subject Code</label>
+                <input type="text" id="subjectCode" placeholder="e.g. CS301">
+            </div>
+            <div class="input-group">
+                <label>Topic / Title <span class="req">*</span></label>
+                <input type="text" id="topic" placeholder="e.g. Sorting Algorithms" maxlength="99" required>
+            </div>
+            <div class="input-group">
+                <label>Academic Year</label>
+                <input type="text" id="academicYear" placeholder="e.g. 2025-26" value="2025-26">
+            </div>
+
+            <!-- Student -->
+            <div class="section-label">Student Details</div>
+            <div class="row-2">
+                <div class="input-group">
+                    <label>Name <span class="req">*</span></label>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Roll No <span class="req">*</span></label>
+                    <input type="text" id="roll_no" placeholder="e.g. 2201" required>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="input-group">
+                    <label>Class <span class="req">*</span></label>
+                    <input type="text" id="class" placeholder="e.g. BCA 3rd Year" required>
+                </div>
+                <div class="input-group">
+                    <label>Semester <span class="req">*</span></label>
+                    <input type="text" id="semester" placeholder="e.g. 5" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Section</label>
+                <input type="text" id="section" placeholder="e.g. A">
+            </div>
+
+            <!-- Submission -->
+            <div class="section-label">Submission</div>
+            <div class="input-group">
+                <label>Submitted To <span class="req">*</span></label>
+                <input type="text" id="teacher" placeholder="e.g. Prof. Ramesh Kumar" required>
+            </div>
+            <div class="input-group">
+                <label>Date of Submission</label>
+                <input type="date" id="submissionDate">
+            </div>
+
+            <div id="error-message"   class="error-box"></div>
+            <div id="success-message" class="success-box"></div>
+
+            <button type="submit" id="generateBtn">⬇ Generate &amp; Download PDF</button>
+        </form>
+    </aside>
+
+    <!-- ─── RIGHT: LIVE PREVIEW ─── -->
+    <main class="preview-panel" id="previewPanel">
+        <div class="preview-label">Live Preview — <span id="activeName">Classic</span></div>
+        <div class="preview-scaler">
+
+            <!-- ══ DESIGN 1: CLASSIC ══ -->
+            <div class="a4-preview preview-design active" id="previewD1">
+                <div class="d1-c d1-tl"></div>
+                <div class="d1-c d1-tr"></div>
+                <div class="d1-c d1-bl"></div>
+                <div class="d1-c d1-br"></div>
+                <div class="d1-header">
+                    <div class="d1-logo-box" id="d1Logo"><span>LOGO</span></div>
+                    <h2 class="d1-uni" data-field="universityName">I.K.G PUNJAB TECHNICAL UNIVERSITY</h2>
+                    <div class="d1-dept" data-field="deptFmt">Department: Electronics and Communication Engineering</div>
+                    <div class="d1-assign-lbl">Assignment</div>
+                    <div class="d1-year" data-field="yearFmt">Academic Year 2025-26</div>
+                </div>
+                <div class="d1-info-box">
+                    <div class="d1-row">
+                        <span class="d1-lbl">Student Name:</span>
+                        <span class="d1-val" data-field="name">——————————</span>
+                    </div>
+                    <div class="d1-row">
+                        <span class="d1-lbl">Roll No:</span>
+                        <span class="d1-val sm" data-field="rollNo">————</span>
+                        <span class="d1-lbl ml">Section:</span>
+                        <span class="d1-val sm" data-field="section">————</span>
+                    </div>
+                    <div class="d1-row">
+                        <span class="d1-lbl">Subject:</span>
+                        <span class="d1-val sm" data-field="subject">——————</span>
+                        <span class="d1-lbl ml">Code:</span>
+                        <span class="d1-val sm" data-field="subjectCode">————</span>
+                    </div>
+                    <div class="d1-row">
+                        <span class="d1-lbl">Topic:</span>
+                        <span class="d1-val" data-field="topic">——————————</span>
+                    </div>
+                    <div class="d1-row">
+                        <span class="d1-lbl">Date:</span>
+                        <span class="d1-val" data-field="dateFmt">——————————</span>
+                    </div>
+                </div>
+                <div class="d1-sub-details">
+                    <div class="d1-sub-row">
+                        <span class="d1-sub-lbl">Class / Semester:</span>
+                        <span class="d1-sub-val" data-field="classSem">————————</span>
+                    </div>
+                    <div class="d1-sub-row">
+                        <span class="d1-sub-lbl">Submitted By:</span>
+                        <span class="d1-sub-val" data-field="name">————————</span>
+                    </div>
+                    <div class="d1-sub-row">
+                        <span class="d1-sub-lbl">Submitted To:</span>
+                        <span class="d1-sub-val" data-field="teacher">————————</span>
+                    </div>
+                </div>
+                <div class="d1-signatures">
+                    <div class="d1-sig-box"><div class="d1-sig-line"></div><span>Student Signature</span></div>
+                    <div class="d1-sig-box"><div class="d1-sig-line"></div><span>Professor Signature</span></div>
+                </div>
+            </div>
+
+            <!-- ══ DESIGN 2: FUTURISTIC ══ -->
+            <div class="a4-preview preview-design" id="previewD2">
+                <div class="d2-brk d2-tl"></div>
+                <div class="d2-brk d2-br"></div>
+                <svg class="d2-circuit" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 20 H20 V40 H40 V20 H60 V60 H80 V40 H100" fill="none" stroke="white" stroke-width="0.2"/>
+                    <circle cx="20" cy="40" r="1" fill="white"/>
+                    <circle cx="60" cy="60" r="1" fill="white"/>
+                    <path d="M0 80 H30 V60" fill="none" stroke="white" stroke-width="0.2"/>
+                </svg>
+                <header class="d2-header">
+                    <div class="d2-logo-box" id="d2Logo"><span>LOGO</span></div>
+                    <h1 class="d2-uni" data-field="universityName">I.K.G PUNJAB TECHNICAL UNIVERSITY</h1>
+                    <div class="d2-dept-tag" data-field="department">ELECTRONICS AND COMMUNICATION ENGINEERING</div>
+                    <p class="d2-session" data-field="yearFmt">Academic Year 2025-26</p>
+                </header>
+                <div class="d2-topic-card">
+                    <span class="d2-assign-bg">ASSIGNMENT</span>
+                    <div class="d2-topic-lbl">Assignment Topic</div>
+                    <div class="d2-topic-txt" data-field="topic">YOUR TOPIC TITLE HERE</div>
+                </div>
+                <div class="d2-info-grid">
+                    <div class="d2-info-item">
+                        <span class="d2-lbl">Student Name</span>
+                        <span class="d2-val" data-field="name">________________________</span>
+                    </div>
+                    <div class="d2-info-item">
+                        <span class="d2-lbl">Roll Number</span>
+                        <span class="d2-val" data-field="rollNo">________________________</span>
+                    </div>
+                    <div class="d2-info-item">
+                        <span class="d2-lbl">Subject</span>
+                        <span class="d2-val" data-field="subject">________________________</span>
+                    </div>
+                    <div class="d2-info-item">
+                        <span class="d2-lbl">Subject Code</span>
+                        <span class="d2-val" data-field="subjectCode">________________________</span>
+                    </div>
+                    <div class="d2-info-item">
+                        <span class="d2-lbl">Class / Semester</span>
+                        <span class="d2-val" data-field="classSem">________________________</span>
+                    </div>
+                    <div class="d2-info-item">
+                        <span class="d2-lbl">Section</span>
+                        <span class="d2-val" data-field="section">________________________</span>
+                    </div>
+                    <div class="d2-info-item d2-full">
+                        <span class="d2-lbl">Submission Date</span>
+                        <span class="d2-val" data-field="dateFmt">________________________</span>
+                    </div>
+                </div>
+                <div class="d2-tech-line"></div>
+                <div class="d2-footer">
+                    <div class="d2-sub-box">
+                        <div class="d2-sign-area"></div>
+                        <span class="d2-sub-lbl">SUBMITTED BY</span>
+                        <div class="d2-sub-name" data-field="name">——</div>
+                    </div>
+                    <div class="d2-sub-box">
+                        <div class="d2-sign-area"></div>
+                        <span class="d2-sub-lbl">SUBMITTED TO</span>
+                        <div class="d2-sub-name" data-field="teacher">——</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ DESIGN 3: GEOMETRIC ══ -->
+            <div class="a4-preview preview-design" id="previewD3">
+                <div class="d3-geo-circle"></div>
+                <div class="d3-side-strip">
+                    <div class="d3-vtext">ENGINEERING</div>
+                </div>
+                <div class="d3-main">
+                    <header class="d3-header">
+                        <div class="d3-logo-box" id="d3Logo"><span>LOGO</span></div>
+                        <div class="d3-uni-name" data-field="universityName">I.K.G Punjab Technical University</div>
+                        <div class="d3-dept-line"></div>
+                        <div class="d3-dept-name" data-field="department">Electronics &amp; Communication Engineering</div>
+                    </header>
+                    <div class="d3-hero">
+                        <span class="d3-year-badge" data-field="yearFmt">ACADEMIC YEAR 2025-26</span>
+                        <h1 class="d3-main-title">ASSIGN<br>MENT</h1>
+                    </div>
+                    <div class="d3-topic-box">
+                        <span class="d3-topic-lbl">Project / Assignment Topic</span>
+                        <div class="d3-topic-val" data-field="topic">Enter Your Detailed Topic Title Here</div>
+                    </div>
+                    <div class="d3-info-grid">
+                        <div class="d3-info-cell">
+                            <span class="d3-lbl">Student Name</span>
+                            <div class="d3-val" data-field="name">_________________________</div>
+                        </div>
+                        <div class="d3-info-cell">
+                            <span class="d3-lbl">Roll Number</span>
+                            <div class="d3-val" data-field="rollNo">_________________________</div>
+                        </div>
+                        <div class="d3-info-cell">
+                            <span class="d3-lbl">Subject Name</span>
+                            <div class="d3-val" data-field="subject">_________________________</div>
+                        </div>
+                        <div class="d3-info-cell">
+                            <span class="d3-lbl">Subject Code</span>
+                            <div class="d3-val" data-field="subjectCode">_________________________</div>
+                        </div>
+                        <div class="d3-info-cell">
+                            <span class="d3-lbl">Class / Semester</span>
+                            <div class="d3-val" data-field="classSem">_________________________</div>
+                        </div>
+                        <div class="d3-info-cell">
+                            <span class="d3-lbl">Section</span>
+                            <div class="d3-val" data-field="section">_________________________</div>
+                        </div>
+                        <div class="d3-info-cell d3-full d3-accent-cell">
+                            <span class="d3-lbl">Date of Submission</span>
+                            <div class="d3-val d3-accent-val" data-field="dateFmt">_________________________</div>
+                        </div>
+                    </div>
+                    <div class="d3-footer">
+                        <div class="d3-sign-box">
+                            <div class="d3-sign-line">Submitted By</div>
+                            <div class="d3-sname" data-field="name">——</div>
+                        </div>
+                        <div class="d3-sign-box right">
+                            <div class="d3-sign-line right">Submitted To</div>
+                            <div class="d3-sname right" data-field="teacher">——</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ DESIGN 4: AESTHETIC ══ -->
+            <div class="a4-preview preview-design" id="previewD4">
+                <div class="d4-bg-pattern"></div>
+                <svg class="d4-floral tr" viewBox="0 0 200 200">
+                    <path d="M40,0 Q100,0 100,60 Q100,100 150,100 Q200,100 200,160 L200,0 Z" fill="#fdf2f2" opacity="0.5"/>
+                    <circle cx="160" cy="40" r="20" fill="#d4af37" opacity="0.15"/>
+                    <circle cx="130" cy="70" r="10" fill="#a36a6a" opacity="0.12"/>
+                </svg>
+                <svg class="d4-floral bl" viewBox="0 0 200 200">
+                    <path d="M40,0 Q100,0 100,60 Q100,100 150,100 Q200,100 200,160 L200,0 Z" fill="#fdf2f2" opacity="0.5"/>
+                    <circle cx="160" cy="40" r="20" fill="#d4af37" opacity="0.15"/>
+                </svg>
+                <div class="d4-content">
+                    <header class="d4-header">
+                        <div class="d4-logo-box" id="d4Logo"><span>LOGO</span></div>
+                        <div class="d4-uni-name" data-field="universityName">I.K.G Punjab Technical University</div>
+                        <div class="d4-dept-badge" data-field="department">Dept of Electronics &amp; Communication Engineering</div>
+                    </header>
+                    <div class="d4-hero">
+                        <h2 class="d4-assign-txt">Assignment</h2>
+                        <div class="d4-session" data-field="yearFmt">Academic Year 2025-26</div>
+                    </div>
+                    <div class="d4-topic-area">
+                        <div class="d4-topic-lbl">Submission Topic</div>
+                        <div class="d4-topic-title" data-field="topic">"Enter Your Assignment Title Here"</div>
+                    </div>
+                    <div class="d4-info-card">
+                        <div class="d4-info-row">
+                            <span class="d4-lbl">Student Name</span>
+                            <span class="d4-val" data-field="name">_________________________</span>
+                        </div>
+                        <div class="d4-info-row">
+                            <span class="d4-lbl">Roll Number</span>
+                            <span class="d4-val" data-field="rollNo">_________________________</span>
+                        </div>
+                        <div class="d4-info-row">
+                            <span class="d4-lbl">Subject</span>
+                            <span class="d4-val" data-field="subject">_________________________</span>
+                        </div>
+                        <div class="d4-info-row">
+                            <span class="d4-lbl">Subject Code</span>
+                            <span class="d4-val" data-field="subjectCode">_________________________</span>
+                        </div>
+                        <div class="d4-info-row">
+                            <span class="d4-lbl">Class / Semester</span>
+                            <span class="d4-val" data-field="classSem">_________________________</span>
+                        </div>
+                        <div class="d4-info-row no-border">
+                            <span class="d4-lbl">Submitted On</span>
+                            <span class="d4-val" data-field="dateFmt">_________________________</span>
+                        </div>
+                    </div>
+                    <div class="d4-footer">
+                        <div class="d4-sign-block">
+                            <div class="d4-sign-line">SUBMITTED BY</div>
+                            <div class="d4-sname" data-field="name">——</div>
+                        </div>
+                        <div class="d4-sign-block">
+                            <div class="d4-sign-line">SUBMITTED TO</div>
+                            <div class="d4-sname" data-field="teacher">——</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ DESIGN 5: PREMIUM ══ -->
+            <div class="a4-preview preview-design" id="previewD5">
+                <div class="d5-watermark">IKGPTU</div>
+                <div class="d5-inner">
+                    <div class="d5-ornament">◆</div>
+                    <header class="d5-header">
+                        <div class="d5-logo-box" id="d5Logo"><span class="d5-icon">🏛️</span></div>
+                        <div class="d5-uni-name" data-field="universityName">I.K.G Punjab Technical University</div>
+                        <div class="d5-dept-name" data-field="deptFmt">Department: Electronics and Communication Engineering</div>
+                    </header>
+                    <div class="d5-title-box">
+                        <div class="d5-year" data-field="yearFmt">Academic Year 2025-26</div>
+                        <h1 class="d5-heading">ASSIGNMENT</h1>
+                    </div>
+                    <div class="d5-topic-box">
+                        <span class="d5-topic-lbl">TOPIC:</span>
+                        <span class="d5-topic-val" data-field="topic">"Enter Your Project / Assignment Topic Here"</span>
+                    </div>
+                    <div class="d5-info-section">
+                        <div class="d5-info-row">
+                            <span class="d5-lbl">Student Name</span>
+                            <span class="d5-dots" data-field="name">________________________________</span>
+                        </div>
+                        <div class="d5-info-row">
+                            <span class="d5-lbl">Roll Number</span>
+                            <span class="d5-dots" data-field="rollNo">________________________________</span>
+                        </div>
+                        <div class="d5-info-row">
+                            <span class="d5-lbl">Subject &amp; Code</span>
+                            <span class="d5-dots" data-field="subjectFull">________________________________</span>
+                        </div>
+                        <div class="d5-info-row">
+                            <span class="d5-lbl">Class / Semester</span>
+                            <span class="d5-dots" data-field="classSem">________________________________</span>
+                        </div>
+                        <div class="d5-info-row">
+                            <span class="d5-lbl">Section</span>
+                            <span class="d5-dots" data-field="section">________________________________</span>
+                        </div>
+                        <div class="d5-info-row">
+                            <span class="d5-lbl">Date of Submission</span>
+                            <span class="d5-dots" data-field="dateFmt">________________________________</span>
+                        </div>
+                    </div>
+                    <div class="d5-sub-footer">
+                        <div class="d5-sign-block">
+                            <div class="d5-sign-line"></div>
+                            <span class="d5-sign-text">SUBMITTED BY</span>
+                            <div class="d5-sign-name" data-field="name">——</div>
+                        </div>
+                        <div class="d5-sign-block">
+                            <div class="d5-sign-line"></div>
+                            <span class="d5-sign-text">SUBMITTED TO</span>
+                            <div class="d5-sign-name" data-field="teacher">——</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /preview-scaler -->
+    </main>
+
+</div><!-- /app-wrapper -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
