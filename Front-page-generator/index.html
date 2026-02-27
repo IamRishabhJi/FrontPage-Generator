@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Front Page Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- ───────── LEFT: FORM PANEL ───────── -->
+    <aside class="form-panel">
+        <div class="panel-header">
+            <h1>📄 Front Page Generator</h1>
+            <p>Fill in details &amp; pick a design theme</p>
+            <!-- Mobile-only preview toggle -->
+            <button type="button" id="previewToggleBtn" class="preview-toggle-btn" aria-expanded="false">
+                👁 Show Preview
+            </button>
+        </div>
+
+        <!-- THEME SELECTOR -->
+        <div class="section-label">Choose Design Theme</div>
+        <div class="theme-grid">
+            <div class="theme-card active" data-theme="blue" title="Classic Blue">
+                <div class="theme-swatch blue-swatch"></div>
+                <span>Classic Blue</span>
+            </div>
+            <div class="theme-card" data-theme="red" title="Bold Red">
+                <div class="theme-swatch red-swatch"></div>
+                <span>Bold Red</span>
+            </div>
+            <div class="theme-card" data-theme="green" title="Royal Green">
+                <div class="theme-swatch green-swatch"></div>
+                <span>Royal Green</span>
+            </div>
+            <div class="theme-card" data-theme="purple" title="Deep Purple">
+                <div class="theme-swatch purple-swatch"></div>
+                <span>Deep Purple</span>
+            </div>
+        </div>
+
+        <form id="frontPageForm" autocomplete="off">
+
+            <!-- University -->
+            <div class="section-label">University / College</div>
+            <div class="input-group">
+                <label>University Name</label>
+                <input type="text" id="universityName" placeholder="e.g. I.K.G PUNJAB TECHNICAL UNIVERSITY" value="I.K.G PUNJAB TECHNICAL UNIVERSITY">
+            </div>
+            <div class="input-group">
+                <label>Department</label>
+                <input type="text" id="department" placeholder="e.g. Electronics and Communication Enginnering" value="Electronics and Communication Enginnering">
+            </div>
+            <div class="input-group">
+                <label>Logo <small>(PNG / JPG, max 200 KB)</small></label>
+                <input type="file" id="logoInput" accept="image/*">
+            </div>
+
+            <!-- Assignment -->
+            <div class="section-label">Assignment Details</div>
+            <div class="input-group">
+                <label>Subject <span class="req">*</span></label>
+                <input type="text" id="subject" placeholder="e.g. Data Structures" required>
+            </div>
+            <div class="input-group">
+                <label>Subject Code</label>
+                <input type="text" id="subjectCode" placeholder="e.g. CS301">
+            </div>
+            <div class="input-group">
+                <label>Topic / Title <span class="req">*</span></label>
+                <input type="text" id="topic" placeholder="e.g. Sorting Algorithms" maxlength="99" required>
+            </div>
+            <div class="input-group">
+                <label>Academic Year</label>
+                <input type="text" id="academicYear" placeholder="e.g. 2025-26" value="2025-26">
+            </div>
+
+            <!-- Student -->
+            <div class="section-label">Student Details</div>
+            <div class="row-2">
+                <div class="input-group">
+                    <label>Name <span class="req">*</span></label>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Roll No <span class="req">*</span></label>
+                    <input type="text" id="roll_no" placeholder="e.g. 2201" required>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="input-group">
+                    <label>Class <span class="req">*</span></label>
+                    <input type="text" id="class" placeholder="e.g. BCA 3rd Year" required>
+                </div>
+                <div class="input-group">
+                    <label>Semester <span class="req">*</span></label>
+                    <input type="text" id="semester" placeholder="e.g. 5" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Section</label>
+                <input type="text" id="section" placeholder="e.g. A">
+            </div>
+
+            <!-- Submission -->
+            <div class="section-label">Submission</div>
+            <div class="input-group">
+                <label>Submitted To <span class="req">*</span></label>
+                <input type="text" id="teacher" placeholder="e.g. Prof. Ramesh Kumar" required>
+            </div>
+            <div class="input-group">
+                <label>Date of Submission</label>
+                <input type="date" id="submissionDate">
+            </div>
+
+            <div id="error-message" class="error-box"></div>
+            <div id="success-message" class="success-box"></div>
+
+            <button type="submit" id="generateBtn">⬇ Generate &amp; Download PDF</button>
+        </form>
+    </aside>
+
+    <!-- ───────── RIGHT: LIVE PREVIEW ───────── -->
+    <main class="preview-panel" id="previewPanel">
+        <div class="preview-label">Live Preview</div>
+        <div class="preview-scaler">
+            <div class="page-container" id="previewPage">
+
+                <!-- Corner Triangles -->
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+
+                <!-- Header -->
+                <div class="pg-header">
+                    <div id="prev-logoBox" class="logo-placeholder">LOGO</div>
+                    <h2 id="prev-uni" class="pg-uni">I.K.G PUNJAB TECHNICAL UNIVERSITY</h2>
+                    <div id="prev-dept" class="pg-dept">Department: Electronics and Communication Enginnering</div>
+                    <div class="pg-assign-label">Assignment</div>
+                    <div id="prev-year" class="pg-year">Academic Year 2025-26</div>
+                </div>
+
+                <!-- Info Box -->
+                <div class="pg-info-box">
+                    <div class="pg-info-row">
+                        <span class="pg-info-label">Student Name:</span>
+                        <span class="pg-info-dotted" id="prev-name">——————————</span>
+                    </div>
+                    <div class="pg-info-row">
+                        <span class="pg-info-label">Roll No:</span>
+                        <span class="pg-info-dotted" id="prev-roll">————</span>
+                        &nbsp;&nbsp;
+                        <span class="pg-info-label">Section:</span>
+                        <span class="pg-info-dotted" id="prev-section">————</span>
+                    </div>
+                    <div class="pg-info-row">
+                        <span class="pg-info-label">Subject:</span>
+                        <span class="pg-info-dotted" id="prev-subject">——————————</span>
+                        &nbsp;&nbsp;
+                        <span class="pg-info-label">Code:</span>
+                        <span class="pg-info-dotted" id="prev-code">————</span>
+                    </div>
+                    <div class="pg-info-row">
+                        <span class="pg-info-label">Topic:</span>
+                        <span class="pg-info-dotted" id="prev-topic">——————————</span>
+                    </div>
+                    <div class="pg-info-row">
+                        <span class="pg-info-label">Date of Submission:</span>
+                        <span class="pg-info-dotted" id="prev-date">——————————</span>
+                    </div>
+                </div>
+
+                <!-- Submission Details -->
+                <div class="pg-sub-details">
+                    <div class="pg-sub-row">
+                        <span class="pg-sub-label">Class / Semester:</span>
+                        <span class="pg-sub-val" id="prev-classem">————————</span>
+                    </div>
+                    <div class="pg-sub-row">
+                        <span class="pg-sub-label">Submitted By:</span>
+                        <span class="pg-sub-val" id="prev-by">————————</span>
+                    </div>
+                    <div class="pg-sub-row">
+                        <span class="pg-sub-label">Submitted To:</span>
+                        <span class="pg-sub-val" id="prev-to">————————</span>
+                    </div>
+                </div>
+
+                <!-- Signatures -->
+                <div class="pg-signatures">
+                    <div class="pg-sig-box">
+                        <div class="pg-sig-line"></div>
+                        <span>Student Signature</span>
+                    </div>
+                    <div class="pg-sig-box">
+                        <div class="pg-sig-line"></div>
+                        <span>Professor Signature</span>
+                    </div>
+                </div>
+
+            </div><!-- /page-container -->
+        </div><!-- /preview-scaler -->
+    </main>
+
+</div><!-- /app-wrapper -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
