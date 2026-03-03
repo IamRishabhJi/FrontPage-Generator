@@ -93,6 +93,11 @@
             <div class="input-group">
                 <label>Logo <small>(PNG / JPG, max 200 KB)</small></label>
                 <input type="file" id="logoInput" accept="image/*">
+                <div id="logoPreviewWrap" style="display:none;margin-top:6px;align-items:center;gap:8px;">
+                    <img id="logoPreviewImg" src="" alt="logo preview" style="height:40px;width:40px;object-fit:contain;border:1px solid #ddd;border-radius:4px;background:#f9f9f9;padding:2px;">
+                    <span id="logoPreviewLabel" style="font-size:11px;color:#555;">Default: logo.png ✓</span>
+                    <button type="button" id="logoClearBtn" style="font-size:11px;background:none;border:none;color:#c0392b;cursor:pointer;padding:0;">✕ Remove</button>
+                </div>
             </div>
 
             <!-- Assignment -->

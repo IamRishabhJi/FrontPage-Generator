@@ -57,12 +57,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('logoInput').addEventListener('change', function() {
         const file = this.files[0];
-        if (!file) { logoDataURL = null; updateAllLogos(null); return; }
+        if (!file) { logoDataURL = null; updateAllLogos(null); hideLogoPreview(); return; }
         if (file.size > 200*1024) { showError('Logo must be under 200 KB.'); this.value = ''; return; }
         const reader = new FileReader();
-        reader.onload = ev => { logoDataURL = ev.target.result; updateAllLogos(logoDataURL); };
+        reader.onload = ev => {
+            logoDataURL = ev.target.result;
+            updateAllLogos(logoDataURL);
+            showLogoPreview(logoDataURL, file.name + ' ✓');
+        };
         reader.readAsDataURL(file);
     });
+
+    const logoClearBtn = document.getElementById('logoClearBtn');
+    if (logoClearBtn) {
+        logoClearBtn.addEventListener('click', () => {
+            logoDataURL = null;
+            updateAllLogos(null);
+            hideLogoPreview();
+            document.getElementById('logoInput').value = '';
+        });
+    }
 
     document.getElementById('frontPageForm').addEventListener('submit', handleSubmit);
 
@@ -97,6 +111,24 @@ function applyColor(colorKey) {
     document.documentElement.style.setProperty('--theme-accent',  c.accent);
 }
 
+// ── LOGO PREVIEW HELPERS ───────────────────────────────────
+function showLogoPreview(src, label) {
+    const wrap  = document.getElementById('logoPreviewWrap');
+    const img   = document.getElementById('logoPreviewImg');
+    const lbl   = document.getElementById('logoPreviewLabel');
+    if (!wrap || !img) return;
+    img.src = src;
+    if (lbl) lbl.textContent = label || '✓ Logo loaded';
+    wrap.style.display = 'flex';
+}
+
+function hideLogoPreview() {
+    const wrap = document.getElementById('logoPreviewWrap');
+    if (wrap) wrap.style.display = 'none';
+    const img  = document.getElementById('logoPreviewImg');
+    if (img)  img.src = '';
+}
+
 // ── LOGO UPDATER ───────────────────────────────────────────
 function updateAllLogos(src) {
     Object.entries(LOGO_DEFAULTS).forEach(([id, def]) => {
@@ -109,18 +141,34 @@ function updateAllLogos(src) {
 }
 
 function loadDefaultLogo() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'logo.png', true);
-    xhr.responseType = 'blob';
-    xhr.onload = function() {
-        if (xhr.status === 200 || xhr.status === 0) {
-            const reader = new FileReader();
-            reader.onload = ev => { logoDataURL = ev.target.result; updateAllLogos(logoDataURL); };
-            reader.readAsDataURL(xhr.response);
-        }
-    };
-    xhr.onerror = () => {};
-    xhr.send();
+    // Try logo_b64.txt first (works via file:// and local server)
+    fetch('logo_b64.txt')
+        .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+        .then(b64 => {
+            const trimmed = b64.trim();
+            logoDataURL = trimmed.startsWith('data:') ? trimmed : 'data:image/png;base64,' + trimmed;
+            updateAllLogos(logoDataURL);
+            showLogoPreview(logoDataURL, 'Default: logo.png ✓');
+        })
+        .catch(() => {
+            // Fallback: load logo.png via XHR (requires a local server)
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'logo.png', true);
+            xhr.responseType = 'blob';
+            xhr.onload = function() {
+                if (xhr.status === 200 || xhr.status === 0) {
+                    const reader = new FileReader();
+                    reader.onload = ev => {
+                        logoDataURL = ev.target.result;
+                        updateAllLogos(logoDataURL);
+                        showLogoPreview(logoDataURL, 'Default: logo.png ✓');
+                    };
+                    reader.readAsDataURL(xhr.response);
+                }
+            };
+            xhr.onerror = () => {};
+            xhr.send();
+        });
 }
 
 // ── FIELD COMPUTER ─────────────────────────────────────────
