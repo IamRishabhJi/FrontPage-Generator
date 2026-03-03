@@ -9,7 +9,7 @@ A clean, fully client-side web application that lets students instantly generate
 ## 🔗 Live Demo
 
 > Open [`index.html`](index.html) locally in any modern browser, or visit the hosted version at:  
-> **https://rishabh.ct.ws/Front-page-generator/index.html**
+> **https://rishabh.ct.ws/Assignment-Page-Generator/index.html**
 
 ---
 
